@@ -14,7 +14,6 @@ RUN chmod a+x /usr/local/bin/* && \
     pip install aiohttp pylru plyvel websockets python-rocksdb uvloop && \
     git clone -b docker-image https://github.com/ranchimall/electrumx.git && \
     cd electrumx && \
-    git checkout 01a3cbefd631511b373841b06e9e1599b4d785ca && \
     python setup.py install && \
     apk del git build-base && \
     rm -rf /tmp/*
