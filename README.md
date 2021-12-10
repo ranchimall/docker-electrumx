@@ -14,13 +14,18 @@ An easily configurable Docker image for running an Electrum server.
 
 ## Usage
 
+Create a Docker volume to store the data, and then run the container
+
+
 ```
+docker volume create electrumx
+
 docker run \
-  -v /home/username/electrumx:/data \
-  -e DAEMON_URL=http://user:pass@host:port \
-  -e COIN=BitcoinSegwit \
-  -p 50002:50002 \
-  lukechilds/electrumx
+  -d --network="host"
+  -v electrumx:/data \
+  -e DAEMON_URL=http://user:pass@127.0.0.1:7313 \
+  -e COIN=FLO \
+  ranchimallfze/electrumx
 ```
 
 If there's an SSL certificate/key (`electrumx.crt`/`electrumx.key`) in the `/data` volume it'll be used. If not, one will be generated for you.
@@ -41,7 +46,9 @@ To access RPC from your host machine, you'll also need to expose port 8000. You 
 
 If you're only accessing RPC from within the container, there's no need to expose the RPC port.
 
-### Version
+### Version 
+
+**Note - this feature is to be finished for RanchiMall's FLO version**
 
 You can also run a specific version of ElectrumX if you want.
 
