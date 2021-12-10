@@ -12,8 +12,9 @@ RUN chmod a+x /usr/local/bin/* && \
     apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.11/main leveldb-dev && \
     apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing rocksdb-dev && \
     pip install aiohttp pylru plyvel websockets python-rocksdb uvloop && \
-    git clone -b $VERSION https://github.com/spesmilo/electrumx.git && \
+    git clone -b $VERSION https://github.com/ranchimall/electrumx.git && \
     cd electrumx && \
+    git checkout 01a3cbefd631511b373841b06e9e1599b4d785ca && \
     python setup.py install && \
     apk del git build-base && \
     rm -rf /tmp/*
